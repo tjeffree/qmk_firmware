@@ -47,8 +47,6 @@ enum custom_keycodes {
 #define LSLSH LSFT_T(KC_NUBS)
 #define LBRKT LSFT(KC_9)
 #define RBRKT LSFT(KC_0)
-#define MTCOPY LT(0,KC_C)
-#define MTPAST LT(0,KC_V)
 
 const uint16_t PROGMEM combo_minus[] = {KC_9, KC_0, COMBO_END};
 const uint16_t PROGMEM combo_plus[] = {KC_0, KC_BSPC, COMBO_END};
@@ -95,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
       KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      LSLSH,   KC_Z,    KC_X,    MTCOPY,  MTPAST,  KC_B,    KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MRSFT ,
+      LSLSH,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MRSFT ,
       KC_LCTL, OS_SWP,  KC_LGUI, KC_LALT, CD,      KC_SPC,  KC_MINS, KC_EQL,  KC_SPC,  FN,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
       ),
 
@@ -233,20 +231,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-
-        // Mod tap stuff
-        case LT(0,KC_C):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_C)); // Intercept hold function to send Ctrl-C
-                return false;
-            }
-            return true;
-        case LT(0,KC_V):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(C(KC_V)); // Intercept hold function to send Ctrl-V
-                return false;
-            }
-            return true;
 
     }
   return true;
