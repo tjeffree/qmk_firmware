@@ -23,7 +23,6 @@
 enum layer_number {
     _QWERTY = 0,
     _FUNCTION,
-    _CODE,
     _LAST,
     _OS
 };
@@ -40,7 +39,6 @@ enum custom_keycodes {
 };
 
 #define FN MO(_FUNCTION)
-#define CD MO(_CODE)
 #define LST MO(_LAST)
 #define MRSFT MT(MOD_RSFT, KC_ENT)
 #define OS_SWP MO(_OS)
@@ -76,7 +74,7 @@ combo_t key_combos[COMBO_COUNT] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Qwerty                                                                | - |  | = |
+/* Qwerty                                                                            | - |  | = |
  * ,-----------------------------------------.             ,-----------------------------------------.
  * | Esc  |  1   |  2   |  3   |  4   |  5   |             |  6   |  7   |  8   |  9   |  0   | BkSp |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------| Home
@@ -86,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------|------+------+------+------+------+------| PgDn
  * | Shft /  Z   |  X   |  C   |  V   |  B   |  [   |   ]  |  N   |  M   |  ,   |  .   |  /   | Entr |
  * |------+------+------+------+------+------|------+------|------+------+------+------+------+------| End
- * | Ctrl |  Fn  | Gui  | Alt  | Code | Spac |      |      | Spac |  Fn  | Left | Down |  Up  | Rght |
+ * | Ctrl |  Fn  | Gui  | Alt  | Fn   | Spac |      |      | Spac |  Fn  | Left | Down |  Up  | Rght |
  * `-------------------------------------------------------------------------------------------------'
  */
   [_QWERTY] = LAYOUT(
@@ -94,49 +92,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
       KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       LSLSH,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MRSFT ,
-      KC_LCTL, OS_SWP,  KC_LGUI, KC_LALT, CD,      KC_SPC,  KC_MINS, KC_EQL,  KC_SPC,  FN,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+      KC_LCTL, OS_SWP,  KC_LGUI, KC_LALT, FN,      KC_SPC,  KC_MINS, KC_EQL,  KC_SPC,  FN,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
       ),
 
 /* Func
 * ,------------------------------------------.             ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |             |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      |      |      |      |  (   |      |             |      |   )  | Ins  |   [  |   ]  | Del  |
+ * |      |      |      |      |  (   |      |             |      |   )  | Ins  |   [  |   ]  | Home |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      | VOL- | VOL+ | MUTE |  {   |      |             |      |   }  |      |      |      |  #   |
+ * |      | VOL- | VOL+ | MUTE |  {   |      |             |      |   }  |      |      |  #   | PgUp |
  * |------+------+------+------+------+------|------+------|------+------+------+------+------+------|
- * |      |  \   |      |      |  [   |      |      |      |      |   ]  |      |      |      |      |
+ * |      |  \   |      |      |  [   |      |      |      |      |   ]  |PHP OP|PHP CL|PHP SH| PgDn |
  * |------+------+------+------+------+------|------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      | Home | PgDn | PgUp | End  |
  * `-------------------------------------------------------------------------------------------------'
  */
   [_FUNCTION] = LAYOUT(
       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-      _______, _______, _______, _______, LBRKT,   _______,                   _______, RBRKT  , KC_INS , KC_LBRC, KC_RBRC, KC_DEL,
-      _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_LCBR, _______,                   _______, KC_RCBR, _______, _______, _______, KC_NUHS,
-      _______, KC_NUBS, _______, _______, KC_LBRC, _______, KC_LCBR, KC_RCBR, _______, KC_RBRC, _______, _______, _______, _______,
+      _______, _______, _______, _______, LBRKT,   _______,                   _______, RBRKT  , KC_INS , KC_LBRC, KC_RBRC, KC_HOME,
+      _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_LCBR, _______,                   _______, KC_RCBR, _______, _______, KC_NUHS, KC_PGDN,
+      _______, KC_NUBS, _______, _______, KC_LBRC, _______, KC_LCBR, KC_RCBR, _______, KC_RBRC, PHP_OP , PHP_CL , PHP_SH,  KC_PGUP,
       _______, LST,     _______, _______, LST,     _______, _______, _______, _______, LST,     KC_HOME, KC_PGDN, KC_PGUP, KC_END
-      ),
-
-/* Code
-* ,------------------------------------------.             ,-----------------------------------------.
- * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |             |  F6  |  F7  |  F8  |   -  |   =  | Bksp |
- * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      |      |      |      |  (   |      |             |      |   )  | Ins  |   [  |   ]  | Del  |
- * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |      | VOL+ | VOL- | MUTE |  {   |      |             |      |   }  |      |      |      |  #   |
- * |------+------+------+------+------+------|------+------|------+------+------+------+------+------|
- * |      |  \   |      |      |  [   |      |      |      |      |   ]  |PHP OP|PHP CL|PHP SH|      |
- * |------+------+------+------+------+------|------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      | <-   | PgDn | PgUp |  ->  |
- * `-------------------------------------------------------------------------------------------------'
- */
-  [_CODE] = LAYOUT(
-      KC_GRV , KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_MINS, KC_EQL,  KC_BSPC,
-      _______, _______, _______, _______, LBRKT,   _______,                   _______, RBRKT  , KC_INS , KC_LBRC, KC_RBRC, KC_DEL,
-      _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_LCBR, _______,                   _______, KC_RCBR, _______, _______, _______, KC_NUHS,
-      _______, KC_NUBS, _______, _______, KC_LBRC, _______, KC_LCBR, KC_RCBR, _______, KC_RBRC, PHP_OP , PHP_CL , PHP_SH , _______,
-      _______, LST,     _______, _______, LST,     _______, _______, _______, _______, LST,     ARROW_LEFT, KC_PGDN, KC_PGUP, ARROW_RGHT
       ),
 
 /* Last / OS
