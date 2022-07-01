@@ -40,4 +40,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_COUNT 8
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
-#define IGNORE_MOD_TAP_INTERRUPT
