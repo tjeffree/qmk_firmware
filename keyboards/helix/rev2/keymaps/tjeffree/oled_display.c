@@ -25,6 +25,7 @@
 enum layer_number {
     _QWERTY = 0,
     _FUNC,
+    _CODE,
     _LAST,
     _OS
 };
@@ -32,6 +33,7 @@ enum layer_number {
 //assign the right code to your layers for OLED display
 #define L_BASE 0
 #define L_FUNC (1<<_FUNC)
+#define L_CODE (1<<_CODE)
 #define L_LAST (1<<_LAST)
 #define L_OS (1<<_OS)
 
@@ -70,12 +72,37 @@ static void render_layer_status(void) {
     oled_write_P(PSTR("LAYER "), false);
     oled_set_cursor(0, 6);
 
+    // switch (layer_state) {
+    // case L_BASE:
+    //     oled_write_P(PSTR("Base "), false);
+    //     break;
+    // case L_CODE:
+    //     oled_write_P(PSTR("Code "), false);
+    //     break;
+    // case L_FUNC:
+    //     oled_write_P(PSTR("Func "), false);
+    //     break;
+    // case L_LAST:
+    //     oled_write_P(PSTR("Last "), false);
+    //     break;
+    // case L_OS:
+    //     oled_write_P(PSTR("OS   "), false);
+    //     break;
+    // default:
+    //     oled_write_P(PSTR("Undef"), false);
+    //     break;
+    // }
+    // oled_write_P(PSTR("\n"), false);
+
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
             oled_write_P(PSTR("Base"), false);
             break;
         case _FUNC:
             oled_write_P(PSTR("Func "), false);
+            break;
+        case _CODE:
+            oled_write_P(PSTR("Code "), false);
             break;
         case _OS:
             oled_write_P(PSTR("OS   "), false);
@@ -113,6 +140,7 @@ static void render_keeb_logo(void) {
     oled_set_cursor(0, 10);
     switch (get_highest_layer(layer_state)) {
         case _FUNC:
+        case _CODE:
             oled_write_raw_P(keeb_logo_func, sizeof(keeb_logo_func));
             break;
         case _OS:
@@ -256,6 +284,9 @@ static void render_layer_status(struct CharacterMatrix *matrix) {
             break;
         case _FUNC:
             oled_write_P(PSTR("Func "), false);
+            break;
+        case _CODE:
+            oled_write_P(PSTR("Code "), false);
             break;
         case _OS:
             oled_write_P(PSTR("OS   "), false);
