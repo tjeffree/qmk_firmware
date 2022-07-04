@@ -37,6 +37,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    //#define RGBLIGHT_EFFECT_ALTERNATING
 #endif
 
-#define COMBO_COUNT 8
+#define COMBO_COUNT 12
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
