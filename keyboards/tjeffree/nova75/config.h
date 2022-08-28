@@ -1,0 +1,26 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include "config_common.h"
+
+/* key matrix size */
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 15
+
+/* key matrix pins */
+#define MATRIX_ROW_PINS { GP23, GP24, GP13, GP14, GP15 }
+#define MATRIX_COL_PINS { GP22, GP25, GP12, GP11, GP10, GP9, GP8, GP7, GP6, GP5, GP4, GP3, GP2, GP1, GP0 }
+
+/* COL2ROW or ROW2COL */
+#define DIODE_DIRECTION COL2ROW
+
+/* Reset. */
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
+
+#define COMBO_COUNT 12
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
+
+#endif
