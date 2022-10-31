@@ -3,7 +3,6 @@
 enum layers {
   _QWERTY = 0,
   _FUNCTION,
-  _CODE,
   _LAST,
   _OS
 };
@@ -20,14 +19,10 @@ enum custom_keycodes {
 };
 
 #define FN MO(_FUNCTION)
-#define CODE MO(_CODE)
 #define LST MO(_LAST)
 #define MRSFT MT(MOD_RSFT, KC_ENT)
 #define OS_SWP MO(_OS)
 #define LSLSH LSFT_T(KC_NUBS)
-#define LBRKT LSFT(KC_9)
-#define RBRKT LSFT(KC_0)
-#define RGUIT RGUI_T(KC_SPC)
 #define RCTLT RCTL_T(KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -42,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------| PgDn
  * | Shft /  Z   |  X   |  C   |  V   |  B   |  [   | Up   |   ]  |  N   |  M   |  ,   |  .   |  /   | Entr |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------| End
- * | Ctrl |  Fn  | Gui  | Alt  | Code | Spac | Left | Down | Rght | Spac |  Fn  | AltG | Gui  | Menu | Ctrl |
+ * | Ctrl |  Fn  | Gui  | Alt  | Code | Spac | Left | Down | Rght | Spac |  Fn  | Left | Down | Up   | Rght |
  * `-------------------------------------------------------+------------------------------------------------'
  */
 	[_QWERTY] = LAYOUT_ortho_5x15(
@@ -55,14 +50,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_FUNCTION] = LAYOUT_ortho_5x15(
 		KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6  , KC_TRNS, KC_TRNS, KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12 ,
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-		KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-		KC_TRNS, KC_NUBS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, PHP_OP , PHP_CL , PHP_SH , KC_TRNS,
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, LST,     KC_TRNS, KC_TRNS, LST,     KC_TRNS, KC_TRNS, LST,     KC_HOME, KC_PGDN, KC_PGUP, KC_END
-        ),
-
-	[_CODE] = LAYOUT_ortho_5x15(
-		KC_GRV,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6  , KC_TRNS, KC_TRNS, KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12 ,
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 		KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 		KC_TRNS, KC_NUBS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, PHP_OP , PHP_CL , PHP_SH , KC_TRNS,
