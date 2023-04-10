@@ -49,6 +49,7 @@ enum custom_keycodes {
 #define RBRKT LSFT(KC_0)
 #define RGUIT RGUI_T(KC_SPC)
 #define RCTLT RCTL_T(KC_SPC)
+#define CAP_CTRL RCTL_T(KC_CAPS)
 
 const uint16_t PROGMEM combo_minus[] = {KC_9, KC_0, COMBO_END};
 const uint16_t PROGMEM combo_plus[] = {KC_0, KC_BSPC, COMBO_END};
@@ -60,10 +61,10 @@ const uint16_t PROGMEM combo_lsqbrkt[] = {KC_3,    KC_4, COMBO_END};
 const uint16_t PROGMEM combo_rsqbrkt[] = {KC_4,    KC_5, COMBO_END};
 
 const uint16_t PROGMEM combo_home[] = {KC_BSPC, KC_DEL, COMBO_END};
-const uint16_t PROGMEM combo_end[] = {MRSFT, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_end[] = {KC_RSFT, KC_RGHT, COMBO_END};
 
 const uint16_t PROGMEM combo_pgup[] = {KC_DEL, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM combo_pgdn[] = {KC_QUOT, MRSFT, COMBO_END};
+const uint16_t PROGMEM combo_pgdn[] = {KC_QUOT, KC_RSFT, COMBO_END};
 
 const uint16_t PROGMEM combo_bksl[] = {LSLSH, KC_Z, COMBO_END};
 const uint16_t PROGMEM combo_hash[] = {KC_SCLN, KC_QUOT, COMBO_END};
@@ -106,9 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
       KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
-      KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      LSLSH,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MRSFT ,
-      KC_LCTL, OS_SWP,  KC_LGUI, KC_LALT, CD,      KC_SPC, KC_SPC , RGUIT  , RCTLT,   FN,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+      CAP_CTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+      LSLSH,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+      KC_LCTL, OS_SWP,  KC_LGUI, KC_LALT, CD,      KC_SPC, KC_SPC , KC_ENT , KC_ENT,  FN,      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
       ),
 
 /* Func
