@@ -23,3 +23,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_COUNT 12
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
+
+#define SPLIT_TRANSACTION_IDS_USER USER_SYNC_KEY_CNTR

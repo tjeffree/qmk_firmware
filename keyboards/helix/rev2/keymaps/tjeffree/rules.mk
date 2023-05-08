@@ -21,9 +21,9 @@ LTO_ENABLE = yes  # if firmware size over limit, try this option
 #   If OLED_SELECT is other than 'core', use helix/local_drivers/ssd1306.c.
 OLED_SELECT = core
 
-ifeq ($(strip $(OLED_ENABLE)), yes)
-    SRC += oled_display.c
-endif
+# ifeq ($(strip $(OLED_ENABLE)), yes)
+#     SRC += oled_display.c
+# endif
 
 COMBO_ENABLE = yes
 EXTRAKEY_ENABLE = yes
